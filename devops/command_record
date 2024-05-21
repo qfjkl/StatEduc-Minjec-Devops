@@ -1,0 +1,29 @@
+# https://learn.microsoft.com/en-us/sql/linux/tutorial-restore-backup-in-sql-server-container?view=sql-server-ver16&tabs=cli
+
+# https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-deployment?view=sql-server-ver15&pivots=cs1-bash
+# For azure studio installation
+# https://learn.microsoft.com/en-us/azure-data-studio/download-azure-data-studio?tabs=win-install%2Cwin-user-install%2Credhat-install%2Cwindows-uninstall%2Credhat-uninstall
+sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Root1234" -e "USER ID=test" `
+   -p 1433:1433 --name sql1 --hostname sql1 `
+   -v "/Volumes/P/StatEduc_MINJEC/database":/var/opt/mssql `
+   -d `
+    mcr.microsoft.com/mssql/server:2017-latest
+
+# List out logical file names and paths inside the backup
+sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd -S localhost \
+   -U SA -P 'Root1234' \
+   -Q 'RESTORE FILELISTONLY FROM DISK = "/var/opt/mssql/backup/DICO_DB_NEW_18042024.bak"' \
+   | tr -s ' ' | cut -d ' ' -f 1-2
+
+# Create empty database
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Root1234' -Q 'CREATE DATABASE dico_DB;'
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Root1234' -Q 'RESTORE DATABASE dico_DB FROM DISK = "/var/opt/mssql/backup/DICO_DB_NEW_18042024.bak" WITH FILE = 1, STATS = 5, REPLACE, MOVE "dico_DB" TO "/var/opt/mssql/data/dico_DB.mdf", MOVE "dico_DB_log" TO "/var/opt/mssql/data/dico_DB_log.ldf"'
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Root1234' -Q 'RESTORE DATABASE BASE_SIGE_MINJEC FROM DISK = "/var/opt/mssql/backup/BASE_SIGE_MINJEC_NEW_18042024.bak" WITH FILE = 1, STATS = 5, REPLACE, MOVE "BASE_SIGE_MINJEC" TO "/var/opt/mssql/data/BASE_SIGE_MINJEC.mdf", MOVE "BASE_SIGE_MINJEC_log" TO "/var/opt/mssql/data/BASE_SIGE_MINJEC_log.ldf"'
+install sandDance extenssion for azure studio
+# Restore the database
+sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
+   -S localhost -U SA -P 'Root1234' \
+   -Q 'RESTORE DATABASE dico_DB FROM DISK = "/var/opt/mssql/backup/DICO_DB_NEW_18042024.bak" WITH FILE = 1, STATS = 5, REPLACE, MOVE "dico_DB" TO "/var/opt/mssql/data/dico_DB.mdf", MOVE "dico_DB_log" TO "/var/opt/mssql/data/dico_DB_log.ldf"'
+
+docker exec -it container_id var/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Root1234' -Q 'RESTORE DATABASE DICO_DB_MINJEC FROM DISK = "/var/opt/mssql/backup/DICO_DB_MINJEC_15052024.bak" WITH FILE = 1, STATS = 5, REPLACE, MOVE "dico_DB" TO "/var/opt/mssql/data/dico_DB.mdf", MOVE "dico_DB_log" TO "/var/opt/mssql/data/dico_DB_log.ldf"'
+docker exec -it container_id var/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Root1234' -Q 'RESTORE DATABASE BASE_SIGE_MINJEC FROM DISK = "/var/opt/mssql/backup/BASE_SIGE_MINJEC_15052024.bak" WITH FILE = 1, STATS = 5, REPLACE, MOVE "BASE_SIGE_MINJEC" TO "/var/opt/mssql/data/BASE_SIGE_MINJEC.mdf", MOVE "BASE_SIGE_MINJEC_log" TO "/var/opt/mssql/data/BASE_SIGE_MINJEC_log.ldf"'

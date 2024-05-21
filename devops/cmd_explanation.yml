@@ -1,0 +1,65 @@
+commands:
+  dynamic-port-configuration:
+    - use-case: Configure dynamic port settings for TCP/IP networking.
+    - commands:
+      - netsh int ipv4 show excludedportrange protocol=tcp
+      - netsh int ipv4 show dynamicport tcp
+      - netsh int ipv4 set dynamic tcp start=49152 num=16384
+      - netsh int ipv6 set dynamic tcp start=49152 num=16384
+    - explanation:
+      - netsh: Network Shell, a command-line utility for network configuration in Windows.
+      - int ipv4: Specifies the IPv4 configuration context.
+      - int ipv6: Specifies the IPv6 configuration context.
+      - show excludedportrange: Command to display the range of excluded ports for TCP.
+      - show dynamicport: Command to display the range of dynamic ports allocated for TCP.
+      - set dynamic: Command to configure the starting port and number of ports in the dynamic port range.
+      - start=49152: Specifies the starting port number for dynamic allocation.
+      - num=16384: Specifies the number of ports in the dynamic port range.
+    - reference:
+      - 'https://medium.com/@sevenall/completely-solve-the-problem-of-docker-containers-not-starting-or-running-on-windows-10-due-to-port-57f16ed6143'
+  
+  sql-backup-database:
+    - use-case: Perform a full backup of the WideWorldImporters database in Microsoft SQL Server.
+    - command:
+        - BACKUP DATABASE [WideWorldImporters] TO DISK = N'/var/opt/mssql/backup/wwi_2.bak' WITH NOFORMAT, NOINIT, NAME = 'WideWorldImporters-full', SKIP, NOREWIND, NOUNLOAD, STATS = 10
+    - explanation:
+        - BACKUP DATABASE [WideWorldImporters]: Initiates a backup operation for the WideWorldImporters database.
+        - TO DISK = N'/var/opt/mssql/backup/wwi_2.bak': Specifies the location and filename of the backup file. In this case, it's stored at '/var/opt/mssql/backup/' with the filename 'wwi_2.bak'.
+        - WITH NOFORMAT: Indicates that the backup should not include any formatting information. This means that existing backup sets on the backup media won't be overwritten.
+        - WITH NOINIT: Ensures that the backup operation appends the backup to the existing backup sets on the backup media rather than overwriting them.
+        - NAME = 'WideWorldImporters-full': Assigns a name to the backup set, in this case, 'WideWorldImporters-full'.
+        - SKIP: Directs SQL Server to skip writing the backup media header. This can be useful when appending to existing backup sets.
+        - NOREWIND: Specifies that the backup media (such as a tape) should not be rewound after the backup operation completes.
+        - NOUNLOAD: Specifies that the backup media (such as a tape) should not be unloaded after the backup operation completes.
+        - STATS = 10: Specifies that a progress report should be displayed every 10 percent completion of the backup operation, providing insight into the backup progress.
+
+  sql-restore-filelistonly:
+    - use-case: Retrieve the list of database and log files from a backup file without performing the actual restore operation in Microsoft SQL Server.
+    - command:
+        - RESTORE FILELISTONLY FROM DISK = "/var/opt/mssql/backup/DICO_DB_NEW_18042024.bak"
+    - explanation:
+        - RESTORE FILELISTONLY: Initiates a command to retrieve the list of database and log files from a backup file without performing the actual restore operation.
+        - FROM DISK = "/var/opt/mssql/backup/DICO_DB_NEW_18042024.bak": Specifies the path to the backup file from which the file list should be retrieved. In this case, the file is located at "/var/opt/mssql/backup/DICO_DB_NEW_18042024.bak".
+
+  sql-restore-database:
+    - use-case: Restore a database from a backup file in Microsoft SQL Server.
+    - command:
+        - RESTORE DATABASE BASE_SIGE_MINJEC FROM DISK = "/var/opt/mssql/backup/BASE_SIGE_MINJEC_NEW_18042024.bak" WITH FILE = 1, STATS = 5, REPLACE, MOVE "BASE_SIGE_MINJEC" TO "/var/opt/mssql/data/BASE_SIGE_MINJEC.mdf", MOVE "BASE_SIGE_MINJEC_log" TO "/var/opt/mssql/data/BASE_SIGE_MINJEC_log.ldf"
+    - explanation:
+        - RESTORE DATABASE BASE_SIGE_MINJEC: Specifies the name of the database to be restored, in this case, "BASE_SIGE_MINJEC".
+        - FROM DISK = "/var/opt/mssql/backup/BASE_SIGE_MINJEC_NEW_18042024.bak": Specifies the path to the backup file from which the database should be restored. The backup file is located at "/var/opt/mssql/backup/BASE_SIGE_MINJEC_NEW_18042024.bak".
+        - WITH FILE = 1: Specifies the position of the backup set to be restored within the backup media. In this case, it refers to the first backup set.
+        - STATS = 5: Specifies that a progress report should be displayed every 5 percent completion of the restore operation, providing insight into the restore progress.
+        - REPLACE: Specifies that if the database already exists, it should be replaced with the restored version from the backup file.
+        - MOVE "BASE_SIGE_MINJEC" TO "/var/opt/mssql/data/BASE_SIGE_MINJEC.mdf": Specifies the new file path and name for the primary data file (MDF) of the restored database.
+        - MOVE "BASE_SIGE_MINJEC_log" TO "/var/opt/mssql/data/BASE_SIGE_MINJEC_log.ldf": Specifies the new file path and name for the transaction log file (LDF) of the restored database.
+  
+  sqlcmd-connect-to-server:
+  - use-case: Connect to a Microsoft SQL Server instance using sqlcmd.
+  - command:
+      - /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Root1234'
+  - explanation:
+      - /opt/mssql-tools/bin/sqlcmd: Path to the sqlcmd tool, which is used for executing SQL statements and scripts from the command line.
+      - -S localhost: Specifies the SQL Server instance to connect to. In this case, it's the SQL Server instance running on the local machine.
+      - -U SA: Specifies the SQL Server login to use for authentication. "SA" is the System Administrator login.
+      - -P 'Root1234': Specifies the password for the SQL Server login provided earlier. The password is enclosed in single quotes to handle special characters if any.
