@@ -26,5 +26,3 @@ docker compose -f ./Docker-files/docker-compose.yaml up -d --build
 REM Open browser
 echo "Opening browser..."
 start "" "http://localhost"
-
-pause

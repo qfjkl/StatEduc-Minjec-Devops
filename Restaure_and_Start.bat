@@ -64,4 +64,4 @@ start "" "http://localhost"
 echo Start restoring %1 database from %2 file...
 docker exec -it %CONTAINER_ID% /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Root1234" -Q "RESTORE DATABASE %1 FROM DISK = '/var/opt/mssql/backup/%2' WITH FILE = 1, STATS = 5, REPLACE, MOVE '%3' TO '/var/opt/mssql/data/%3.mdf', MOVE '%3_log' TO '/var/opt/mssql/data/%3_log.ldf'"
 echo Restoring of %1 database is terminated
-pause
+exit /b
