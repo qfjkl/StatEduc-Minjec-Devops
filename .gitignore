@@ -1,2 +1,4 @@
-mssql/
+*.bak
+*.ldf
+*.mdf
 StatEduc_MINJEC/
