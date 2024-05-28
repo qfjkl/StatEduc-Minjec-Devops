@@ -9,10 +9,10 @@ services:
       - ../StatEduc_MINJEC:/var/www/html/
       - ../nginx/logs:/var/log/nginx/
   php:
-    # image: fpm-php-7-alpine
-    build: 
-      context: .
-      dockerfile: Dockerfile-php.dockerfile
+    image: fpm-php-7-alpine
+    # build: 
+    #   context: .
+    #   dockerfile: Dockerfile-php.dockerfile
     expose:
       - 9000
     volumes:
