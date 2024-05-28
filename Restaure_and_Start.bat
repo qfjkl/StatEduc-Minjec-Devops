@@ -6,6 +6,19 @@ REM Replace connexion data
 echo Replacing connexion data...
 echo #70;SqlServeur;mssql;mssqlhost;sa;Root1234;BASE_SIGE_MINJEC > StatEduc_MINJEC\connexion.php
 
+@REM start docker desktop app
+echo Starting docker desktop app
+start /B "Docker Desktop" "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+
+@REM Function to check if Docker is running
+:wait_for_docker
+echo Waiting for Docker to start...
+timeout /t 5 >nul 2>&1
+docker info >nul 2>&1
+if errorlevel 1 (
+    goto wait_for_docker
+)
+
 @REM Stop Docker Compose services
 echo Stopping Docker Compose...
 docker compose -f ./Docker-files/docker-compose.yaml down
@@ -51,4 +64,4 @@ start "" "http://localhost"
 echo Start restoring %1 database from %2 file...
 docker exec -it %CONTAINER_ID% /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Root1234" -Q "RESTORE DATABASE %1 FROM DISK = '/var/opt/mssql/backup/%2' WITH FILE = 1, STATS = 5, REPLACE, MOVE '%3' TO '/var/opt/mssql/data/%3.mdf', MOVE '%3_log' TO '/var/opt/mssql/data/%3_log.ldf'"
 echo Restoring of %1 database is terminated
-exit /b
+pause
