@@ -19,6 +19,10 @@ if errorlevel 1 (
     goto wait_for_docker
 )
 
+@REM Remove stoped container
+echo Remove stopped container...
+docker compose -f ./Docker-files/docker-compose.yaml rm -f -s
+
 REM Start Docker Compose services
 echo Starting Docker Compose services...
 docker compose -f ./Docker-files/docker-compose.yaml up -d --build
