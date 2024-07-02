@@ -1,0 +1,161 @@
+Msg 156, Level 15, State 1, Server ee2df026a1ed, Line 1
+Incorrect syntax near the keyword 'FROM'.
+8 percent processed.
+17 percent processed.
+25 percent processed.
+34 percent processed.
+42 percent processed.
+51 percent processed.
+59 percent processed.
+68 percent processed.
+76 percent processed.
+85 percent processed.
+93 percent processed.
+100 percent processed.
+Processed 1496 pages for database 'DICO_DB_MINJEC', file 'dico_DB' on file 1.
+Processed 5 pages for database 'DICO_DB_MINJEC', file 'dico_DB_log' on file 1.
+RESTORE DATABASE successfully processed 1501 pages in 389.899 seconds (0.030 MB/sec).
+8 percent processed.
+12 percent processed.
+17 percent processed.
+21 percent processed.
+25 percent processed.
+34 percent processed.
+38 percent processed.
+42 percent processed.
+46 percent processed.
+51 percent processed.
+55 percent processed.
+63 percent processed.
+68 percent processed.
+72 percent processed.
+76 percent processed.
+80 percent processed.
+85 percent processed.
+93 percent processed.
+97 percent processed.
+100 percent processed.
+Processed 3008 pages for database 'BASE_SIGE_MINJEC', file 'BASE_SIGE_MINJEC' on file 1.
+Processed 2 pages for database 'BASE_SIGE_MINJEC', file 'BASE_SIGE_MINJEC_log' on file 1.
+RESTORE DATABASE successfully processed 3010 pages in 9.656 seconds (2.435 MB/sec).
+8 percent processed.
+16 percent processed.
+24 percent processed.
+33 percent processed.
+41 percent processed.
+49 percent processed.
+58 percent processed.
+66 percent processed.
+74 percent processed.
+83 percent processed.
+91 percent processed.
+99 percent processed.
+100 percent processed.
+Processed 1536 pages for database 'DICO_DB_MINJEC', file 'dico_DB' on file 1.
+Processed 4 pages for database 'DICO_DB_MINJEC', file 'dico_DB_log' on file 1.
+RESTORE DATABASE successfully processed 1540 pages in 381.291 seconds (0.031 MB/sec).
+8 percent processed.
+12 percent processed.
+16 percent processed.
+21 percent processed.
+25 percent processed.
+33 percent processed.
+37 percent processed.
+42 percent processed.
+46 percent processed.
+50 percent processed.
+59 percent processed.
+63 percent processed.
+67 percent processed.
+71 percent processed.
+75 percent processed.
+80 percent processed.
+88 percent processed.
+92 percent processed.
+96 percent processed.
+100 percent processed.
+Processed 3032 pages for database 'BASE_SIGE_MINJEC', file 'BASE_SIGE_MINJEC' on file 1.
+Processed 4 pages for database 'BASE_SIGE_MINJEC', file 'BASE_SIGE_MINJEC_log' on file 1.
+RESTORE DATABASE successfully processed 3036 pages in 11.843 seconds (2.002 MB/sec).
+8 percent processed.
+16 percent processed.
+24 percent processed.
+33 percent processed.
+41 percent processed.
+49 percent processed.
+58 percent processed.
+66 percent processed.
+74 percent processed.
+83 percent processed.
+91 percent processed.
+99 percent processed.
+100 percent processed.
+Processed 1536 pages for database 'DICO_DB_MINJEC', file 'dico_DB' on file 1.
+Processed 2 pages for database 'DICO_DB_MINJEC', file 'dico_DB_log' on file 1.
+RESTORE DATABASE successfully processed 1538 pages in 377.838 seconds (0.031 MB/sec).
+8 percent processed.
+12 percent processed.
+16 percent processed.
+21 percent processed.
+25 percent processed.
+33 percent processed.
+37 percent processed.
+42 percent processed.
+46 percent processed.
+50 percent processed.
+59 percent processed.
+63 percent processed.
+67 percent processed.
+71 percent processed.
+75 percent processed.
+80 percent processed.
+88 percent processed.
+92 percent processed.
+97 percent processed.
+100 percent processed.
+Processed 3032 pages for database 'BASE_SIGE_MINJEC', file 'BASE_SIGE_MINJEC' on file 1.
+Processed 2 pages for database 'BASE_SIGE_MINJEC', file 'BASE_SIGE_MINJEC_log' on file 1.
+RESTORE DATABASE successfully processed 3034 pages in 11.939 seconds (1.985 MB/sec).
+8 percent processed.
+16 percent processed.
+24 percent processed.
+33 percent processed.
+41 percent processed.
+49 percent processed.
+58 percent processed.
+66 percent processed.
+74 percent processed.
+83 percent processed.
+91 percent processed.
+99 percent processed.
+100 percent processed.
+Processed 1536 pages for database 'DICO_DB_MINJEC', file 'dico_DB' on file 1.
+Processed 3 pages for database 'DICO_DB_MINJEC', file 'dico_DB_log' on file 1.
+RESTORE DATABASE successfully processed 1539 pages in 381.007 seconds (0.031 MB/sec).
+8 percent processed.
+12 percent processed.
+16 percent processed.
+21 percent processed.
+25 percent processed.
+33 percent processed.
+37 percent processed.
+42 percent processed.
+46 percent processed.
+50 percent processed.
+59 percent processed.
+63 percent processed.
+67 percent processed.
+71 percent processed.
+75 percent processed.
+80 percent processed.
+88 percent processed.
+92 percent processed.
+97 percent processed.
+100 percent processed.
+Processed 3032 pages for database 'BASE_SIGE_MINJEC', file 'BASE_SIGE_MINJEC' on file 1.
+Processed 2 pages for database 'BASE_SIGE_MINJEC', file 'BASE_SIGE_MINJEC_log' on file 1.
+RESTORE DATABASE successfully processed 3034 pages in 12.771 seconds (1.856 MB/sec).
+RESTORE DATABASE successfully processed 0 pages in 2.288 seconds (0.000 MB/sec).
+RESTORE DATABASE successfully processed 0 pages in 1.535 seconds (0.000 MB/sec).
+Msg 156, Level 15, State 1, Server ee2df026a1ed, Line 1
+Incorrect syntax near the keyword 'FROM'.
